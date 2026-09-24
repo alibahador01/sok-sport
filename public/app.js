@@ -91,7 +91,7 @@
     }
 
     async function fetchJson(path) {
-        const response = await fetch(path, { headers: { Accept: 'application/json' } });
+    const response = await fetch('https://worldcup26.ir' + path, { headers: { Accept: 'application/json' } });
         const body = await response.json().catch(() => ({}));
         if (!response.ok) {
             const message = typeof body.error === 'string'
