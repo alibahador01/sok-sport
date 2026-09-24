@@ -1,84 +1,193 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl" class="dark">
+<!doctype html>
+<html lang="en" dir="ltr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Şok Sport⁰¹ — نتایج زنده</title>
-<meta name="theme-color" content="#0d1117">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
-<script>
-tailwind.config = {
-  darkMode: 'class',
-  theme: {
-    extend: {
-      colors: {
-        brand: { blue: '#3b82f6', purple: '#7c3aed', red: '#ef4444', green: '#22c55e' }
-      }
-    }
-  }
-};
-</script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Şok Sport⁰¹ — Live Football Scores</title>
+    <meta name="description" content="Şok Sport⁰¹ — Live football scores, fixtures, standings and match details">
+    <meta name="author" content="Şok Sport">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#07101d">
+    <link rel="canonical" href="https://soksport01.pages.dev/">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Şok Sport⁰¹">
+    <meta property="og:url" content="https://soksport01.pages.dev/">
+    <meta property="og:title" content="Şok Sport⁰¹ — Live Football Scores">
+    <meta property="og:description" content="Şok Sport⁰¹ — Live football scores, fixtures, standings and match details">
+    <meta property="og:image" content="https://soksport01.pages.dev/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Şok Sport">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Şok Sport⁰¹ — Live Football Scores">
+    <meta name="twitter:description" content="Şok Sport⁰¹ — Live football scores, fixtures, standings and match details">
+    <meta name="twitter:image" content="https://soksport01.pages.dev/og-image.png">
 </head>
-<body class="bg-[#0d1117] text-[#e6edf3] min-h-screen">
+<body data-page-kind="home" data-league-slug="" data-country="">
+    <a class="skip-link" href="#main-content">Skip to football scores</a>
+    <header class="site-header">
+        <nav class="nav shell" aria-label="Main navigation">
+            <a class="brand" href="/" aria-label="Şok Sport⁰¹ home">
+                <span class="brand-ball" aria-hidden="true">●</span>
+                <span>
+                    <strong>Şok Sport⁰¹</strong>
+                    <small>LIVE SCORES</small>
+                </span>
+            </a>
+            <div class="nav-status" id="service-status">
+                <span class="status-dot"></span>
+                <span>Connecting to service</span>
+            </div>
+            <div class="nav-actions"><a href="/football-api">API</a><a class="docs-link" href="/api-docs/">Docs <span aria-hidden="true">↗</span></a></div>
+        </nav>
+    </header>
 
-<!-- Header -->
-<header class="sticky top-0 z-50 bg-[#0d1117]/95 backdrop-blur border-b border-[#21262d]">
-  <div class="max-w-6xl mx-auto px-4 h-14 flex items-center gap-3">
-    <div class="flex items-center gap-2">
-      <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center font-black text-white text-lg">Ş</span>
-      <span class="text-base font-medium">Şok<span class="font-extrabold text-blue-500">Sport</span><sup class="text-[9px] text-gray-500">⁰¹</sup></span>
-    </div>
-    <div class="flex-1"></div>
-    <button id="refresh-btn" class="px-3 h-8 rounded-lg bg-[#161b22] border border-[#21262d] text-xs font-semibold hover:bg-[#21262d]">به‌روزرسانی</button>
-  </div>
-</header>
+    <main id="main-content">
+        <section class="hero shell" aria-labelledby="page-title">
+            <div class="hero-copy">
+                <p class="overline">Live Football</p>
+                <h1 id="page-title">Şok Sport⁰¹ — Live Football Scores</h1>
+                <p>Live scores, fixtures, results and standings</p>
+            </div>
+            <div class="hero-numbers" aria-label="Service coverage statistics">
+                <div><strong id="stat-competitions">—</strong><span>Active competitions</span></div>
+                <div><strong id="stat-matches">—</strong><span>Matches</span></div>
+                <div><strong id="stat-events">—</strong><span>Match events</span></div>
+            </div>
+        </section>
 
-<!-- Main -->
-<main class="max-w-6xl mx-auto px-3 py-4">
+        <section class="explorer shell" aria-label="Choose a league and explore its matches">
+            <aside class="filters-panel">
+                <div class="panel-heading">
+                    <span class="step-number">1</span>
+                    <div><h2>Choose a competition</h2><p>Select a country, then choose a league.</p></div>
+                </div>
 
-  <!-- Selectors -->
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
-    <div>
-      <label class="block text-xs font-bold text-gray-400 mb-1.5">کشور</label>
-      <select id="country-select" class="w-full h-11 bg-[#161b22] border border-[#21262d] rounded-lg px-3 text-sm focus:outline-none focus:border-blue-500">
-        <option value="">در حال بارگذاری...</option>
-      </select>
-    </div>
-    <div>
-      <label class="block text-xs font-bold text-gray-400 mb-1.5">لیگ</label>
-      <select id="league-select" class="w-full h-11 bg-[#161b22] border border-[#21262d] rounded-lg px-3 text-sm focus:outline-none focus:border-blue-500">
-        <option value="">ابتدا کشور رو انتخاب کن</option>
-      </select>
-    </div>
-  </div>
+                <label class="field" for="country-select">
+                    <span>Country</span>
+                    <span class="select-wrap">
+                        <span class="field-icon" aria-hidden="true">◎</span>
+                        <select id="country-select" disabled>
+                            <option value="">Loading countries…</option>
+                        </select>
+                    </span>
+                </label>
 
-  <!-- Date nav -->
-  <div class="flex items-center gap-2 mb-4 bg-[#161b22] border border-[#21262d] rounded-lg p-1.5">
-    <button id="prev-day" class="w-9 h-9 rounded-md hover:bg-[#21262d] flex items-center justify-center">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
-    </button>
-    <div id="date-label" class="flex-1 text-center font-bold text-sm">امروز</div>
-    <button id="next-day" class="w-9 h-9 rounded-md hover:bg-[#21262d] flex items-center justify-center">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
-    </button>
-  </div>
+                <label class="field" for="league-select">
+                    <span>League or competition</span>
+                    <span class="select-wrap">
+                        <span class="field-icon" aria-hidden="true">◆</span>
+                        <select id="league-select" disabled>
+                            <option value="">Choose a country first</option>
+                        </select>
+                    </span>
+                </label>
 
-  <!-- Matches -->
-  <div id="matches" class="space-y-2">
-    <div class="text-center py-12 text-gray-500 text-sm">لیگ رو انتخاب کن تا بازی‌ها بیاد</div>
-  </div>
+                <div class="league-card" id="league-card" hidden>
+                    <div class="league-logo" id="league-logo">SC</div>
+                    <div class="league-identity">
+                        <strong id="league-name">—</strong>
+                        <span id="league-season">—</span>
+                    </div>
+                    <dl class="coverage-list">
+                        <div><dt>Matches</dt><dd id="coverage-matches">0</dd></div>
+                        <div><dt>Clubs</dt><dd id="coverage-clubs">0</dd></div>
+                        <div><dt>Tables</dt><dd id="coverage-tables">0</dd></div>
+                    </dl>
+                </div>
+            </aside>
 
-</main>
+            <section class="data-panel" aria-live="polite">
+                <div class="empty-welcome" id="welcome-state">
+                    <div class="pitch" aria-hidden="true"><span></span><i></i></div>
+                    <h2>Choose a league</h2>
+                    <p>Its fixtures, results and standings will appear here.</p>
+                </div>
 
-<footer class="border-t border-[#21262d] mt-8 py-6 text-center text-xs text-gray-500">
-  © 2025 Şok Sport<sup>⁰¹</sup>
-</footer>
+                <div id="league-dashboard" hidden>
+                    <div class="dashboard-header">
+                        <div>
+                            <p class="overline" id="dashboard-country">—</p>
+                            <h2 id="dashboard-title">—</h2>
+                        </div>
+                        <button class="refresh-button" id="refresh-button" type="button" title="Refresh data">
+                            <span aria-hidden="true">↻</span> Refresh
+                        </button>
+                    </div>
 
-<script src="app.js"></script>
+                    <div class="tabs" role="tablist" aria-label="League information">
+                        <button class="tab is-active" id="fixtures-tab" type="button" role="tab" aria-selected="true" aria-controls="fixtures-view" data-view="fixtures">
+                            Fixtures &amp; results <span id="fixture-count">0</span>
+                        </button>
+                        <button class="tab" id="standings-tab" type="button" role="tab" aria-selected="false" aria-controls="standings-view" data-view="standings">
+                            Standings
+                        </button>
+                    </div>
+
+                    <div class="view" id="fixtures-view" role="tabpanel" aria-labelledby="fixtures-tab">
+                        <div class="fixture-toolbar">
+                            <label>From <input id="date-from" type="date"></label>
+                            <label>To <input id="date-to" type="date"></label>
+                            <label>Status
+                                <select id="fixture-status">
+                                    <option value="all">All matches</option>
+                                    <option value="scheduled">Scheduled</option>
+                                    <option value="live">Live</option>
+                                    <option value="finished">Finished</option>
+                                </select>
+                            </label>
+                            <button class="filter-button" id="apply-fixture-filter" type="button">Apply filters</button>
+                        </div>
+                        <div class="content-state" id="fixtures-loading" hidden><span class="loader"></span><p>Loading fixtures…</p></div>
+                        <div class="content-state" id="fixtures-empty" hidden><span class="empty-icon">⌁</span><p>No matches are stored for these filters.</p></div>
+                        <div class="fixtures-list" id="fixtures-list"></div>
+                        <button class="load-more" id="fixtures-load-more" type="button" hidden>Load more matches</button>
+                    </div>
+
+                    <div class="view" id="standings-view" role="tabpanel" aria-labelledby="standings-tab" hidden>
+                        <div class="content-state" id="standings-loading" hidden><span class="loader"></span><p>Loading standings…</p></div>
+                        <div class="content-state" id="standings-empty" hidden><span class="empty-icon">≡</span><p>Standings have not been stored for this league yet.</p></div>
+                        <div id="standings-content"></div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <noscript><p class="shell noscript-note">JavaScript is required for interactive live updates.</p></noscript>
+    </main>
+
+    <dialog class="match-dialog" id="match-dialog" aria-labelledby="match-dialog-title">
+        <div class="dialog-shell">
+            <header class="dialog-header">
+                <div>
+                    <span class="match-state" id="dialog-status">—</span>
+                    <p id="dialog-date">—</p>
+                </div>
+                <button class="close-button" id="close-dialog" type="button" aria-label="Close match details">×</button>
+            </header>
+            <div class="dialog-content" id="dialog-content">
+                <div class="content-state"><span class="loader"></span><p>Loading match details…</p></div>
+            </div>
+        </div>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+    <footer>
+        <div class="shell footer-row">
+            <div>
+                <strong>Şok Sport⁰¹</strong>
+                <span>Live football scores, fixtures, results and tables</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/app.js" defer></script>
 </body>
-        </html>
+          </html>
